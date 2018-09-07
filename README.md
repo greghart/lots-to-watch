@@ -1,3 +1,21 @@
+# Lots To Watch
+
+This project stemmed from a problem I had -- I had lots to watch!
+
+On my IMDB watchlist, I had over 100 movies. The primary use case I set out to
+solve was to get an at a glance look at which movies were available on a 
+subscription service (Netflix/Amazon) so I could see which ones to watch first. 
+However, I quickly realized manually checking movies with a "where to stream" 
+service was slow and unwieldy.
+
+This project takes an IMDB watchlist export, and will find the best source to 
+watch it, as well as presents this data in a simple UI layer.
+
+This also served as an attempt to learn [Apollo GraphQL](https://www.apollographql.com/) and 
+[Create React App](https://github.com/facebookincubator/create-react-app)
+
+# Create React App Synopsis
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
