@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
+import { InMemoryCache } from 'apollo-cache-inmemory';
 
-import logo from './logo.svg';
 import './App.css';
-import ExchangeRates from './components/ExchangeRates';
+import UploaderContainer from './components/UploaderContainer';
+import { defaults, typeDefs, resolvers } from './clientState';
+
+const cache = new InMemoryCache();
+
 
 const client = new ApolloClient({
-  uri: "https://w5xlvm3vzz.lp.gql.zone/graphql"
+  uri: "https://w5xlvm3vzz.lp.gql.zone/graphql",
+  clientState: {
+    defaults,
+    typeDefs,
+    cache,
+    resolvers: {}
+  }
 });
 
 class App extends Component {
@@ -15,17 +25,17 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Lots To Watch</h1>
         </header>
         <p className="App-intro">
-          <ApolloProvider client={client}>
-            <div>
-              <h2>My first Apollo app</h2>
-              <ExchangeRates />
-            </div>
-          </ApolloProvider>
+          Start by uploading an exported IMDB list.
+          Then, we will scrape where each entry is available.
         </p>
+        <ApolloProvider client={client}>
+          <div>
+            <UploaderContainer />
+          </div>
+        </ApolloProvider>
       </div>
     );
   }
